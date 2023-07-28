@@ -13,9 +13,6 @@ RegisterCommand("testshell", function(_, args)
         DeleteEntity(shell)
     else
         oldCoords = GetEntityCoords(PlayerPedId())
-
-        BeginTextCommandDisplayHelp(GetCurrentResourceName())
-        EndTextCommandDisplayHelp(0, true, true, 0)
     end
 
     shell = CreateObject(shellModel, oldCoords + vec3(0.0, 0.0, 50.0), true, true)
