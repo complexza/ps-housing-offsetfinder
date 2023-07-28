@@ -1,5 +1,5 @@
 # Offset Finder for ps-housing
-You can use this tool to get offets for custom shells that you would like to add to ps-housing!
+You can use this tool to get offets for custom shells that you would like to add to [ps-housing](https://www.github.com/Project-Sloth/ps-housing)!
 
 ### Original Credits:
 > [Offset Finder by Loaf](https://www.github.com/loaf-scripts/loaf_offsetfinder)
