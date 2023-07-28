@@ -1,5 +1,6 @@
-# loaf_offsetfinder
-Tool to find offests from shells, used for loaf_housing.
+# ps-housing-offsetfinder
+Tool to find offests from shells, used for ps-housing.
+Originally by Loaf for loaf_housing. Changed for ps-housing format.
 
 ## How to use
 1. Put the script into the resources folder

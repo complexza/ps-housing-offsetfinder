@@ -1,29 +1,12 @@
 local shell, oldCoords
 
-function Notify(txt)
-    BeginTextCommandThefeedPost("STRING")
-    AddTextComponentSubstringPlayerName(txt)
-    EndTextCommandThefeedPostTicker(true, true)
-end
-
-function GetInstructional(command)
-    local hash = GetHashKey(command)
-    local hex = string.upper(string.format("%x", hash))
-
-    if hash < 0 then
-        hex = string.gsub(hex, string.rep("F", 8), "")
-    end
-
-    return  "~INPUT_" .. hex .. "~"
-end
-
 RegisterCommand("testshell", function(_, args)
     local shellName = args[1]
     local shellModel = shellName and GetHashKey(shellName)
     if not shellName then
-        return Notify(("No such shell \"%s\"."):format(shellName or ""))
+        return lib.notify({ description = 'The Interior '..shellName..' does not exist!', type = 'error'})
     elseif not IsModelInCdimage(shellModel) then
-        return Notify(("The shell \"%s\" is not in cd image, did you start the shell?"):format(shellName))
+        return lib.notify({ description = 'The Interior '..shellName..' is not in CD Image, Did you start the shell?!', type = 'error'})
     end
 
     if DoesEntityExist(shell) then 
@@ -49,13 +32,11 @@ RegisterCommand("deleteshell", function()
 
     DeleteEntity(shell)
     shell = nil
-    
+
     SetEntityCoordsNoOffset(PlayerPedId(), oldCoords)
     oldCoords = nil
 
-    ClearAllHelpMessages()
-    
-    Notify("Deleted shell")
+    lib.notify({ description = 'Shell has been deleted.', type = 'inform'})
 end)
 RegisterKeyMapping("deleteshell", "Delete current shell", "keyboard", "BACK")
 
@@ -63,20 +44,13 @@ RegisterCommand("copyoffset", function()
     if not shell then 
         return 
     end
-    
+
     local myCoords, shellCoords = GetEntityCoords(PlayerPedId()) - vec3(0.0, 0.0, 0.99), GetEntityCoords(shell)
     local offset = myCoords - shellCoords
     SendNUIMessage({
-        coords = ("doorOffset = vector3(%f, %f, %f),\ndoorHeading = %f"):format(offset.x, offset.y, offset.z, GetEntityHeading(PlayerPedId()))
+        coords = ("doorOffset = { x = %f, y = %f, z = %f, h = %f, width = 2.0 },"):format(offset.x, offset.y, offset.z, GetEntityHeading(PlayerPedId()))
     })
 
-    Notify("Copied offset to clipboard.")
+    lib.notify({ description = 'Offets has been copied to your clipboard', type = 'inform'})
 end)
 RegisterKeyMapping("copyoffset", "Copy shell offset", "keyboard", "RETURN")
-
-CreateThread(function()
-    AddTextEntry(
-        GetCurrentResourceName(), 
-        ("Press %s to delete the shell object.\nPress %s to copy the offset."):format(GetInstructional("deleteshell"), GetInstructional("copyoffset"))
-    )
-end)
