@@ -8,6 +8,9 @@ You can use this tool to get offets for custom shells that you would like to add
 1. Changed the clipboard format to directly fit ps-housing
 2. Changed the notifications to ox-lib.
 
+### Dependencies
+- ox_lib
+
 ## How to use
 1. Put the script into the resources folder
 2. Start the script, you can add it to server.cfg if you want
