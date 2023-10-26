@@ -4,10 +4,15 @@ author 'complexza'
 description "Tool to find Offsets inside Shells for ps-housing"
 version "1.0.0"
 
-client_scripts 'client/*.lua'
-server_scripts 'server/*.lua'
+client_scripts {
+	'client/main.lua',
+}
 
-shared_script {
+server_scripts {
+	'server/server.lua',
+}
+
+shared_scripts {
     '@ox_lib/init.lua',
 }
 

@@ -62,7 +62,7 @@ local copyOffset = lib.addKeybind({
         local myCoords, shellCoords = GetEntityCoords(cache.ped) - vec3(0.0, 0.0, 0.99), GetEntityCoords(shell)
         local offset = myCoords - shellCoords
 
-        lib.setClipboard("doorOffset = { x = %f, y = %f, z = %f, h = %f, width = 2.0 },"):format(offset.x, offset.y, offset.z, GetEntityHeading(cache.ped))
+        lib.setClipboard("doorOffset = { x = "..offset.x..", y = "..offset.y..", z = "..offset.z..", h = "..GetEntityHeading(cache.ped)..", width = 2.0 },")
 
         lib.notify({ description = 'Offets has been copied to your clipboard', type = 'inform'})
     end,
