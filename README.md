@@ -6,7 +6,7 @@ You can use this tool to get offets for custom shells that you would like to add
 
 ## Changes by me:
 1. Changed the clipboard format to directly fit ps-housing
-2. Changed the notifications to ox-lib.
+2. Got Rid of HTML, Converted fully to Ox Lib.
 
 ### Dependencies
 - ox_lib
