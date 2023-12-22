@@ -63,7 +63,7 @@ local copyOffset = lib.addKeybind({
         local offset = myCoords - shellCoords
         local formattedOffsetX = string.format("%.2f", offset.x)
         local formattedOffsetY = string.format("%.2f", offset.y)
-        local formattedOffsetZ = string.format("%.2f", offset.x)
+        local formattedOffsetZ = string.format("%.2f", offset.z)
         local formattedHeading = string.format("%.2f", GetEntityHeading(cache.ped))
 
         lib.setClipboard("doorOffset = { x = "..formattedOffsetX..", y = "..formattedOffsetY..", z = "..formattedOffsetZ..", h = "..formattedHeading..", width = 2.0 },")
